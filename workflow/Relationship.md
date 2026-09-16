@@ -1,11 +1,11 @@
 # Relationship.md — Peta Relasi Kerja Tim
 
 **Proyek:** Sistem Reservasi & Pelaporan Fasilitas Kampus (PPK 2026 — UTS)
-**Acuan:** `PROJECT_WORKFLOW.md` · `DATABASE_DESIGN.md` · `Project PPK 2026.pdf` · SRS per role (`docs/srs/`)
+**Acuan:** `PROJECT_WORKFLOW.md` · `DATABASE_DESIGN.md` · `Project PPK 2026.pdf` · SRS per role (`workflow/srs/`)
 **Tim:** 4 anggota — **1 Project Manager + 3 Programmer**
 **Periode kerja:** 16 Sep – 10 Okt 2026 · **Hard deadline:** 11 Okt 2026, 12.00 WIB
 **Status dokumen:** DRAFT v2.0 — disahkan PM bersama SRS sebelum Design Freeze G1 (19 Sep)
-**Versi:** 2.0
+**Versi:** 2.2
 
 > Dokumen ini adalah **satu-satunya sumber kebenaran** untuk pembagian kerja, kontrak antar anggota, tata kelola branch, dan *CORE PROMPT* AI tim. File `Anggota1.md` s/d `Anggota4.md` dan keempat SRS merujuk ke sini.
 
@@ -223,7 +223,7 @@ flowchart TB
 
 | Jendela | Anggota 1 — PM | Anggota 2 — Data & Insight | Anggota 3 — Reservasi | Anggota 4 — Platform & Laporan |
 |---|---|---|---|---|
-| **16–19 Sep** Analysis & Design | K-14 governance, SRS induk, review 3 SRS, draf test plan, pimpin G1 | SRS A2, `DATABASE_DESIGN.md`, EER, kamus data | SRS A3, spesifikasi slot/bentrok & trigger reservasi | SRS A4, keputusan starter kit (OQ-17), route map, RBAC matrix |
+| **16–19 Sep** Analysis & Design | K-14 governance, SRS induk, review 3 SRS, draf test plan, pimpin G1 | SRS A2, `DATABASE_DESIGN.md`, EER, kamus data | SRS A3, spesifikasi slot/bentrok & trigger reservasi | SRS A4, rancang halaman auth Blade, route map, RBAC matrix |
 | **20–22 Sep** Fondasi | K-11 test plan, papan GitHub Projects, merge fondasi | K-01 → K-13 → K-04 | K-05 TimeSlot (tanpa DB) | K-00 → K-02 → K-03 → K-09 |
 | **23–27 Sep** Sprint 1 | Review & merge terjadwal, traceability, demo 27 Sep | US-16, US-02 | US-03 (+stub K-06), US-05 | US-13, US-14, US-06 (+stub K-07) |
 | **28 Sep–6 Okt** Sprint 2 | Merge, pantau kontrak & risiko, draf dokumen Word | US-08, US-12, US-17 | US-09, US-10, US-04, US-01 | US-07, US-15, US-11 |
@@ -362,7 +362,7 @@ Aturan: **hanya pemilik yang mengedit**. Butuh perubahan di file orang lain → 
 
 | Area | Anggota 1 — PM | Anggota 2 — Data & Insight | Anggota 3 — Reservasi | Anggota 4 — Platform & Laporan |
 |---|---|---|---|---|
-| Dokumen | `PROJECT_WORKFLOW.md`, `Relationship.md`, `CLAUDE.md`, `docs/srs/SRS_Anggota1_PM.md`, `docs/TRACEABILITY.md`, `docs/04-testing/*`, `docs/05-delivery/*` | `DATABASE_DESIGN.md`, `docs/srs/SRS_Anggota2_*.md`, `docs/02-design/eer-model.mwb`, `data-dictionary.md` | `docs/srs/SRS_Anggota3_*.md`, `docs/02-design/state-machine.md` | `docs/srs/SRS_Anggota4_*.md`, `docs/02-design/route-map.md`, `rbac-matrix.md` |
+| Dokumen | `workflow/PROJECT_WORKFLOW.md`, `workflow/Relationship.md`, `workflow/CLAUDE.md`, `workflow/srs/SRS_Anggota1_PM.md`, `docs/TRACEABILITY.md`, `docs/04-testing/*`, `docs/05-delivery/*` | `workflow/DATABASE_DESIGN.md`, `workflow/srs/SRS_Anggota2_*.md`, `docs/02-design/eer-model.mwb`, `data-dictionary.md` | `workflow/srs/SRS_Anggota3_*.md`, `docs/02-design/state-machine.md` | `workflow/srs/SRS_Anggota4_*.md`, `docs/02-design/route-map.md`, `rbac-matrix.md` |
 | Repo & rilis | `.github/CODEOWNERS`, `.github/pull_request_template.md`, tag rilis | — | — | `README.md`, `.env.example`, `.gitignore` |
 | Route | — | `routes/modules/facilities.php`, `dashboard.php`, `recap.php` | `routes/modules/reservations.php` (termasuk ketersediaan) | `routes/web.php` (hanya `require`), `auth.php`, `admin-users.php`, `reports.php` |
 | Database | — | `database/migrations/*`, `database/sql/*`, `DatabaseSeeder.php`, `FacilitySeeder.php`, `database/dump/final.sql` | `ReservationSeeder.php` | `UserSeeder.php`, `ReportSeeder.php` |
@@ -370,7 +370,7 @@ Aturan: **hanya pemilik yang mengedit**. Butuh perubahan di file orang lain → 
 | Logika | — | `app/Support/DatabaseErrorTranslator.php`, `app/Services/RecapService.php`, `app/Exports/*` | `app/Support/TimeSlot.php`, `app/Rules/ValidReservationSlot.php`, `app/Services/ReservationService.php` | `app/Http/Middleware/EnsureRole.php`, `app/Actions/Fortify/*`, `app/Providers/FortifyServiceProvider.php`, `config/fortify.php` |
 | Controller | — | `FacilityController`, `Admin/FacilityController`, `Staff/FacilityStatusController`, `Staff/DashboardController`, `Admin/RecapController` | `ReservationController`, `AvailabilityController`, `Staff/ReservationController` | `Admin/UserController`, `Admin/StaffController`, `ReportController`, `Staff/ReportController` |
 | Request & Policy | — | `FacilityPolicy`, `FacilityRequest`, `RecapRequest` | `ReservationPolicy`, request reservasi | `UserPolicy`, `ReportPolicy`, request akun & laporan |
-| View | — | `facilities/index`, `admin/facilities/*`, `staff/dashboard`, `admin/recap/*` | `facilities/availability`, `reservations/*`, `staff/reservations/*` | `layouts/*`, `components/*`, halaman auth starter kit, `admin/users/*`, `reports/*`, `staff/reports/*` |
+| View | — | `facilities/index`, `admin/facilities/*`, `staff/dashboard`, `admin/recap/*` | `facilities/availability`, `reservations/*`, `staff/reservations/*` | `layouts/*`, `components/*`, `auth/*` (view Fortify), `admin/users/*`, `reports/*`, `staff/reports/*` |
 | Factory & test | `tests/Acceptance/*` (skenario UAT, opsional) | `FacilityFactory`, test modul A2 | `ReservationFactory`, test modul A3 | `UserFactory`, `ReportFactory`, test modul A4 |
 | Delivery | Dokumen Word, slide, `docs/05-delivery/screenshots/` (kompilasi) | Dump SQL | — | `docs/05-delivery/credentials.md` |
 
@@ -510,10 +510,10 @@ Isi template PR:
 
 | Branch | File | Pemilik | Disetujui |
 |---|---|---|---|
-| `srs/anggota1-pm` | `docs/srs/SRS_Anggota1_PM.md` | Anggota 1 | Programmer (review) → PM merge |
-| `srs/anggota2-data-fasilitas-insight` | `docs/srs/SRS_Anggota2_Data_Fasilitas_Insight.md` | Anggota 2 | PM |
-| `srs/anggota3-reservasi-ketersediaan` | `docs/srs/SRS_Anggota3_Reservasi_Ketersediaan.md` | Anggota 3 | PM |
-| `srs/anggota4-platform-identity-laporan` | `docs/srs/SRS_Anggota4_Platform_Identity_Laporan.md` | Anggota 4 | PM |
+| `srs/anggota1-pm` | `workflow/srs/SRS_Anggota1_PM.md` | Anggota 1 | Programmer (review) → PM merge |
+| `srs/anggota2-data-fasilitas-insight` | `workflow/srs/SRS_Anggota2_Data_Fasilitas_Insight.md` | Anggota 2 | PM |
+| `srs/anggota3-reservasi-ketersediaan` | `workflow/srs/SRS_Anggota3_Reservasi_Ketersediaan.md` | Anggota 3 | PM |
+| `srs/anggota4-platform-identity-laporan` | `workflow/srs/SRS_Anggota4_Platform_Identity_Laporan.md` | Anggota 4 | PM |
 
 Perubahan SRS setelah disetujui dilakukan di branch `srs/…` yang sama (atau dibuat ulang dari `main`), dengan versi SRS dinaikkan dan dicatat di changelog SRS.
 
@@ -598,7 +598,7 @@ Empat orang memakai AI secara terpisah. Tanpa aturan bersama, gaya kode, bahasa,
 ```mermaid
 flowchart TB
     subgraph REPO["Repository main - sumber tunggal"]
-        CORE["CORE PROMPT v2.0<br/>CLAUDE.md di root repo<br/>identik untuk 4 orang"]
+        CORE["CORE PROMPT v2.1<br/>CLAUDE.md di root repo<br/>identik untuk 4 orang"]
         CTX["Context Pack<br/>PROJECT_WORKFLOW.md, Relationship.md<br/>DATABASE_DESIGN.md, SRS per role"]
     end
 
@@ -643,7 +643,7 @@ Salinan yang dipakai Claude Code ada di `CLAUDE.md` (root repo). Blok di bawah a
 
 ```text
 # ═══════════════════════════════════════════════════════════
-# CORE PROMPT TIM PPK 2026 — v2.0
+# CORE PROMPT TIM PPK 2026 — v2.1
 # Sistem Reservasi & Pelaporan Fasilitas Kampus
 # Komposisi: 1 Project Manager + 3 Programmer
 # ═══════════════════════════════════════════════════════════
@@ -652,7 +652,7 @@ Salinan yang dipakai Claude Code ada di `CLAUDE.md` (root repo). Blok di bawah a
 Kamu adalah "DevFlow", asisten Senior Full-Stack untuk tim 4 orang.
 Kamu melayani SATU anggota; perannya (Project Manager atau Programmer)
 ada di OVERLAY yang ditempel setelah CORE ini. Sebutkan
-"CORE v2.0 + OVERLAY Anggota-N (<peran>)" di awal jawaban pertama sesi.
+"CORE v2.1 + OVERLAY Anggota-N (<peran>)" di awal jawaban pertama sesi.
 
 ## BAHASA
 - Semua penjelasan dalam Bahasa Indonesia.
@@ -663,7 +663,7 @@ ada di OVERLAY yang ditempel setelah CORE ini. Sebutkan
 ## STACK (jangan menawarkan alternatif)
 Laravel 13 · PHP >= 8.3 · MySQL Server >= 8.0.16 InnoDB utf8mb4 ·
 MySQL Workbench (sumber kebenaran skema) · Blade ·
-starter kit Livewire + Laravel Fortify (BUKAN Breeze).
+Blade standar tanpa starter kit + Laravel Fortify headless (BUKAN Breeze/Livewire).
 
 ## ATURAN INTI
 AI-01 Fase: Analysis → Design → Implementation → Testing → Deployment.
@@ -752,14 +752,14 @@ BR-10 Validasi server dan client untuk form penting.
 /handoff   catatan serah terima untuk anggota lain
 /standup   standup 3 baris dari pekerjaan terakhir
 /cr        draf Change Request ke PM
-# ═══════════════════════════ AKHIR CORE v2.0 ═════════════════
+# ═══════════════════════════ AKHIR CORE v2.1 ═════════════════
 ```
 
 ### 13.4 Cara memasang per tool
 
 | Tool AI | Core | Overlay |
 |---|---|---|
-| Claude Code | `CLAUDE.md` di root repo (sudah di `main`, berlaku otomatis) | `CLAUDE.local.md` pribadi (di-*ignore* git), isi = blok overlay dari `AnggotaN.md` §9 |
+| Claude Code | `CLAUDE.md` di root repo — mengimpor `workflow/CLAUDE.md`, berlaku otomatis | `CLAUDE.local.md` pribadi (di-*ignore* git), isi = blok overlay dari `AnggotaN.md` §9 |
 | GitHub Copilot | `.github/copilot-instructions.md` (salinan blok §13.3) | Tempel di awal chat |
 | Cursor | `.cursor/rules/core.mdc` | `.cursor/rules/role.mdc` (lokal) |
 | ChatGPT / Gemini / Claude web | Custom / project instructions | Tempel di pesan pertama |
@@ -848,7 +848,7 @@ Tanya jawab: pertanyaan dijawab **pemilik modul**; PM menjawab pertanyaan proses
 | OQ-08 | Nama, NIM, username GitHub keempat anggota + siapa PM | Semua | Isi di header tiap `AnggotaN.md`; username PM diperlukan untuk CODEOWNERS |
 | OQ-13 | Nilai enum English DB + label Indonesia? | A2 | Sebelum G1 |
 | OQ-15 | Tool AI yang dipakai tiap anggota? | Semua | Sebelum 18 Sep |
-| OQ-17..OQ-22 | Starter kit, status `expired`, ENUM vs tabel master, batal reservasi approved, foto wajib, data demo rekap | A2, A3, A4 | Default di `DATABASE_DESIGN.md` §16; putuskan di G1 |
+| OQ-18..OQ-22 | Status `expired`, ENUM vs tabel master, batal reservasi approved, foto wajib, data demo rekap | A2, A3, A4 | Default di `DATABASE_DESIGN.md` §16; putuskan di G1 |
 | **OQ-23** | Repo GitHub **publik atau privat**? Menentukan ketersediaan proteksi branch & CODEOWNERS | PM | 16 Sep |
 
 ---
@@ -857,6 +857,8 @@ Tanya jawab: pertanyaan dijawab **pemilik modul**; PM menjawab pertanyaan proses
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.2 | 2026-09-16 | OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`; rujukan starter kit Livewire diganti; CORE PROMPT v2.1. | DevFlow |
+| 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Restrukturisasi tim menjadi 1 Project Manager + 3 Programmer.** US dipetakan ulang (A2: US-02/08/12/16/17; A3: US-01/03/04/05/09/10; A4: US-06/07/11/13/14/15). PM memegang `main` sendirian. Tambah §10 tata kelola git & branch (sub-branch per role, branch `srs/*`, alur PR, aturan GIT-01..12, proteksi GitHub, template PR), kontrak K-14 governance & K-15 SRS, rujukan FR per US, kepemilikan file baru, timeline mulai 16 Sep, CORE PROMPT v2.0 (AI-11 branch, AI-12 SRS, AI-13 test), risiko R-02 bottleneck PM & R-03 push ke main, presentasi & dokumen Word dipimpin PM, OQ-23. | DevFlow |
 | 1.2 | 2026-09-15 | Instalasi MySQL dihapus; `DATABASE_DESIGN.md` masuk critical path; K-13; CORE v1.2 (Laravel 13, Fortify, RDBMS). | DevFlow |
 | 1.1 | 2026-09-15 | Kontrak K-12 standar DBMS; CORE v1.1; risiko DBMS. | DevFlow |
