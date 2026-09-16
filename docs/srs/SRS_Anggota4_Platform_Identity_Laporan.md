@@ -7,7 +7,7 @@
 | **Pemilik** | Anggota 4 — Programmer Platform, Identity & Laporan |
 | **Penyetuju** | Anggota 1 — Project Manager |
 | **Branch** | `srs/anggota4-platform-identity-laporan` |
-| **Status** | DRAFT 1.0 — wajib disetujui PM paling lambat 18 Sep 2026 (K-15) |
+| **Status** | DRAFT 1.1 — wajib disetujui PM paling lambat 18 Sep 2026 (K-15) |
 | **Acuan** | `docs/srs/SRS_Anggota1_PM.md` (SRS induk) · `Relationship.md` v2.0 · `DATABASE_DESIGN.md` v1.1 · `Anggota4.md` v2.0 |
 
 ---
@@ -39,7 +39,7 @@ Dokumen ini menetapkan kebutuhan untuk **fondasi aplikasi, autentikasi & otorisa
 
 ### 1.4 Referensi
 
-`Project PPK 2026.pdf` (Ketentuan Umum 2, aktor, US-06, US-07, US-11, US-13..15) · `PROJECT_WORKFLOW.md` §1.2 · `DATABASE_DESIGN.md` §5.1, §5.8, §7.3, §13.1 · Laravel 13 docs (starter kits, Fortify, authorization, filesystem, validation).
+`Project PPK 2026.pdf` (Ketentuan Umum 2, aktor, US-06, US-07, US-11, US-13..15) · `PROJECT_WORKFLOW.md` §1.2 · `DATABASE_DESIGN.md` §5.1, §5.8, §7.3, §13.1 · Laravel 13 docs (Fortify, Blade, authorization, filesystem, validation).
 
 ### 1.5 Konvensi
 
@@ -96,7 +96,7 @@ flowchart LR
 
 | ID | Batasan |
 |---|---|
-| C-A4-01 | Laravel 13, PHP ≥ 8.3, starter kit Livewire + Laravel Fortify (OQ-17) |
+| C-A4-01 | Laravel 13, PHP ≥ 8.3, Blade standar tanpa starter kit, Laravel Fortify headless (OQ-17 diputuskan); CSS/JS polos di `public/` |
 | C-A4-02 | Pemisahan folder minimal `/public`, `/app`, `/views`, `/config` (soal) |
 | C-A4-03 | Validasi server **dan** client untuk form penting (BR-10) |
 | C-A4-04 | Transisi status laporan juga ditegakkan trigger MySQL (`DATABASE_DESIGN.md` §7.3) |
@@ -350,7 +350,7 @@ stateDiagram-v2
 |---|---|---|
 | OQ-03 | Registrasi mandiri? | Ya (AS-A4-01) |
 | OQ-09 / OQ-21 | Jumlah & kewajiban foto | Satu, wajib (AS-A4-02) |
-| OQ-17 | Starter kit | Livewire + Fortify |
+| OQ-17 | Starter kit | **Diputuskan:** tanpa starter kit — Blade + Fortify |
 | — | Verifikasi email (Fortify) | Tidak diaktifkan; verifikasi dilakukan admin (US-15) |
 
 ---
@@ -368,4 +368,5 @@ stateDiagram-v2
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 1.1 | 2026-09-16 | OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`. | DevFlow |
 | 1.0 | 2026-09-16 | Draf awal SRS Anggota 4: FR-A4-01..11 dengan acceptance criteria, siklus hidup akun & laporan, aturan unggah foto, route, kontrak K-00/K-02/K-03/K-07/K-09/K-10, NFR, verifikasi, traceability. | DevFlow |
