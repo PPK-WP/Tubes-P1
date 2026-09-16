@@ -12,7 +12,7 @@
 
 - Aplikasi web untuk mengelola fasilitas kampus (ruang kelas, aula, laboratorium, alat, lapangan) dengan dua alur di satu database: **reservasi** dan **pelaporan kerusakan**.
 - Empat aktor: Pengunjung (tanpa login), Pengguna, Petugas, Admin. Ada 17 user story (US-01..US-17).
-- Stack: **Laravel 13 (PHP ≥ 8.3)**, starter kit **Livewire + Laravel Fortify** (Breeze tidak lagi tercantum di dokumentasi Laravel 13), **MySQL Server ≥ 8.0.16** + MySQL Workbench.
+- Stack: **Laravel 13 (PHP ≥ 8.3)**, tampilan **Blade standar tanpa starter kit**, autentikasi **Laravel Fortify** headless, CSS/JS polos di `public/` (npm tidak wajib), **MySQL Server ≥ 8.0.16** + MySQL Workbench.
 - Deadline: **11 Okt 2026 pukul 12.00 WIB** via Kulon (target internal 10 Okt malam). Presentasi 10 menit + tanya jawab.
 - Metode: SDLC fase-per-fase (Analysis → Design → Implementation → Testing → Deployment) + diagram BPMN/Mermaid.
 
@@ -75,16 +75,17 @@ Semua dokumen berada di folder `workflow/` (SRS di `workflow/srs/` pada branch `
 | 2026-09-15 | MySQL ≥ 8.0.16 **diasumsikan terpasang** di laptop semua anggota (tidak ada panduan instalasi) |
 | 2026-09-15 | **Database ikut menegakkan aturan** (CHECK, trigger, UNIQUE slot, view, procedure); batas transaksi dipegang Laravel; test di MySQL, bukan SQLite |
 | 2026-09-16 | **Tim direstrukturisasi menjadi 1 PM + 3 Programmer**; hanya PM yang merge ke `main`; SRS per role di branch `srs/*` |
+| 2026-09-16 | OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/` |
 | 2026-09-16 | Semua dokumen Markdown dipindah ke `workflow/`, PDF ke `workflow_pdf/`; `CLAUDE.md` di root menjadi pengimpor `workflow/CLAUDE.md` |
 | 2026-09-16 | Root git lama berada di home directory (`/home/shoandhy`) → repo proyek dibuat **terpisah di folder proyek**; repo home tidak dipakai untuk proyek ini |
 
-## 8. CORE PROMPT v2.0
+## 8. CORE PROMPT v2.1
 
 Teks di bawah **identik** dengan `Relationship.md` §13.3. Bila salah satu diubah, ubah keduanya dan naikkan versinya.
 
 ```text
 # ═══════════════════════════════════════════════════════════
-# CORE PROMPT TIM PPK 2026 — v2.0
+# CORE PROMPT TIM PPK 2026 — v2.1
 # Sistem Reservasi & Pelaporan Fasilitas Kampus
 # Komposisi: 1 Project Manager + 3 Programmer
 # ═══════════════════════════════════════════════════════════
@@ -93,7 +94,7 @@ Teks di bawah **identik** dengan `Relationship.md` §13.3. Bila salah satu diuba
 Kamu adalah "DevFlow", asisten Senior Full-Stack untuk tim 4 orang.
 Kamu melayani SATU anggota; perannya (Project Manager atau Programmer)
 ada di OVERLAY yang ditempel setelah CORE ini. Sebutkan
-"CORE v2.0 + OVERLAY Anggota-N (<peran>)" di awal jawaban pertama sesi.
+"CORE v2.1 + OVERLAY Anggota-N (<peran>)" di awal jawaban pertama sesi.
 
 ## BAHASA
 - Semua penjelasan dalam Bahasa Indonesia.
@@ -104,7 +105,7 @@ ada di OVERLAY yang ditempel setelah CORE ini. Sebutkan
 ## STACK (jangan menawarkan alternatif)
 Laravel 13 · PHP >= 8.3 · MySQL Server >= 8.0.16 InnoDB utf8mb4 ·
 MySQL Workbench (sumber kebenaran skema) · Blade ·
-starter kit Livewire + Laravel Fortify (BUKAN Breeze).
+Blade standar tanpa starter kit + Laravel Fortify headless (BUKAN Breeze/Livewire).
 
 ## ATURAN INTI
 AI-01 Fase: Analysis → Design → Implementation → Testing → Deployment.
@@ -193,7 +194,7 @@ BR-10 Validasi server dan client untuk form penting.
 /handoff   catatan serah terima untuk anggota lain
 /standup   standup 3 baris dari pekerjaan terakhir
 /cr        draf Change Request ke PM
-# ═══════════════════════════ AKHIR CORE v2.0 ═════════════════
+# ═══════════════════════════ AKHIR CORE v2.1 ═════════════════
 ```
 
 ## 9. Overlay Pribadi
@@ -213,7 +214,7 @@ Tanpa overlay, AI hanya tahu aturan umum tim dan akan menanyakan peranmu sebelum
 
 ## 10. Open Questions Aktif
 
-Lihat `Relationship.md` §17 dan `workflow/srs/SRS_Anggota1_PM.md` §7. Yang paling mendesak: OQ-01 (reservasi multi-slot), OQ-08 (identitas & username GitHub), OQ-13 (nilai enum), OQ-17 (starter kit), OQ-23 (repo publik/privat).
+Lihat `Relationship.md` §17 dan `workflow/srs/SRS_Anggota1_PM.md` §7. Yang paling mendesak: OQ-01 (reservasi multi-slot), OQ-08 (identitas & username GitHub), OQ-13 (nilai enum), OQ-23 (repo publik/privat).
 
 ---
 
@@ -221,6 +222,7 @@ Lihat `Relationship.md` §17 dan `workflow/srs/SRS_Anggota1_PM.md` §7. Yang pal
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 1.3 | 2026-09-16 | OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`; rujukan starter kit Livewire diganti; CORE PROMPT v2.1. | DevFlow |
 | 1.2 | 2026-09-16 | §9 merujuk berkas personalisasi AI `workflow/srs_anggota1.md` s/d `srs_anggota4.md`. | DevFlow |
 | 1.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 1.0 | 2026-09-16 | Dokumen awal: ringkasan proyek, protokol bahasa & persona DevFlow, komposisi 1 PM + 3 Programmer, aturan branch, peta dokumen, status, log keputusan sesi 9–16 Sep, CORE PROMPT v2.0 (diambil dari `Relationship.md` §13.3), cara memasang overlay pribadi. | DevFlow |

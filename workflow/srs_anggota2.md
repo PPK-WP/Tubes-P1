@@ -4,7 +4,7 @@
 |---|---|
 | **Untuk** | Anggota 2 — Programmer Data (MySQL), Fasilitas & Insight |
 | **Tujuan** | Membuat asisten AI bekerja sesuai peran, SRS, dan aturan tim tanpa perlu dijelaskan ulang setiap sesi |
-| **Dipakai bersama** | CORE PROMPT v2.0 (`workflow/CLAUDE.md` §8) |
+| **Dipakai bersama** | CORE PROMPT v2.1 (`workflow/CLAUDE.md` §8) |
 | **SRS** | SRS-A2 — branch `srs/anggota2-data-fasilitas-insight` · PDF `workflow_pdf/srs/SRS_Anggota2_Data_Fasilitas_Insight.pdf` |
 | **Panduan kerja** | `workflow/Anggota2.md` · `workflow/DATABASE_DESIGN.md` |
 
@@ -39,7 +39,7 @@
 ```text
 # ═══════════════════════════════════════════════════════════════
 # PERSONALISASI AI — Anggota 2 · Programmer · Data, Fasilitas & Insight
-# Dipakai bersama CORE v2.0 (workflow/CLAUDE.md)
+# Dipakai bersama CORE v2.1 (workflow/CLAUDE.md)
 # ═══════════════════════════════════════════════════════════════
 
 ## SIAPA SAYA
@@ -263,4 +263,5 @@ menjalankan skrip DATABASE_DESIGN.md §6.2 untuk membuktikan aturan tetap aktif.
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 1.1 | 2026-09-16 | Mengacu CORE PROMPT v2.1 (OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`). | DevFlow |
 | 1.0 | 2026-09-16 | Dokumen awal personalisasi AI Anggota 2: cara pasang, lingkungan kerja, blok `CLAUDE.local.md`, 13 prompt tugas, prompt rutin, checklist PR. | DevFlow |

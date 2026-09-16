@@ -13,7 +13,7 @@
 | **SRS** | `workflow/srs/SRS_Anggota3_Reservasi_Ketersediaan.md` (FR-A3-01 s/d FR-A3-09) |
 | **Review sejawat** | Me-review PR Anggota 2 · PR saya direview Anggota 4 · review akhir & merge oleh PM |
 | **Beban** | 26 poin (33%) |
-| **Acuan** | `Relationship.md` v2.1 · `PROJECT_WORKFLOW.md` v2.1 · `DATABASE_DESIGN.md` v1.2 |
+| **Acuan** | `Relationship.md` v2.2 · `PROJECT_WORKFLOW.md` v2.2 · `DATABASE_DESIGN.md` v1.3 |
 
 ---
 
@@ -265,12 +265,12 @@ Aturan praktis: tangkap error 1644/3819/1062 lewat `DatabaseErrorTranslator`. Fa
 
 ## 9. Prompt Overlay AI
 
-Tempel **CORE PROMPT v2.0** (`CLAUDE.md` / `Relationship.md` §13.3) lebih dulu, lalu tempel blok ini.
+Tempel **CORE PROMPT v2.1** (`CLAUDE.md` / `Relationship.md` §13.3) lebih dulu, lalu tempel blok ini.
 
 ```text
 # ═══════════════════════════════════════════════════════════
 # OVERLAY — Anggota 3 · Programmer · Reservation Engine & Ketersediaan
-# Dipakai bersama CORE v2.0
+# Dipakai bersama CORE v2.1
 # ═══════════════════════════════════════════════════════════
 
 ## PERAN
@@ -376,6 +376,7 @@ controller reservasi & ketersediaan, view, factory, test).
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.2 | 2026-09-16 | Mengacu CORE PROMPT v2.1 (OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`). | DevFlow |
 | 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Restrukturisasi tim (1 PM + 3 Programmer).** Peran menjadi Programmer — Reservation Engine & Ketersediaan; US-01 grid ketersediaan diambil dari Anggota 2. Spesifikasi rinci (V-1..V-8, T-1..T-10, race condition, privasi) dipindah ke SRS Anggota 3. Tambah FR-A3, branch `a3/*`, rotasi review (direview A4, me-review A2), overlay CORE v2.0. | DevFlow |
 | 1.2 | 2026-09-15 | Pembagian aturan Laravel vs MySQL, status `expired`, `system_settings`. | DevFlow |

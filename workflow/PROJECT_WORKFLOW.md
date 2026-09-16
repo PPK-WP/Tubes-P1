@@ -6,7 +6,7 @@
 **Metodologi:** SDLC (Waterfall-inkremental) + pemodelan proses BPMN
 **Deadline pengumpulan:** 11 Oktober 2026, 12.00 WIB (via Kulon)
 **Tim:** 1 Project Manager + 3 Programmer (`Relationship.md` §1)
-**Versi dokumen:** 2.1
+**Versi dokumen:** 2.2
 
 ---
 
@@ -254,7 +254,7 @@ flowchart TB
 
 | # | Aktivitas | Input | Output / Artefak | Tool |
 |---|---|---|---|---|
-| 3.1 | Scaffolding Laravel + auth | Design doc | Project skeleton | Composer, Laravel installer, starter kit Livewire + Laravel Fortify (OQ-17) |
+| 3.1 | Scaffolding Laravel + auth | Design doc | Project skeleton | Composer, Laravel installer (tanpa starter kit), Laravel Fortify + Blade |
 | 3.2 | Migration sesuai DDL | `schema.sql` | `database/migrations/*` | Artisan |
 | 3.3 | Model + relasi Eloquent | EER | `app/Models/*` | Artisan |
 | 3.4 | Form Request validasi server | BR-01..BR-04, BR-10 | `app/Http/Requests/*` | Artisan |
@@ -324,7 +324,7 @@ Soal mewajibkan minimal pemisahan folder `/public`, `/app` (model/controller), `
 
 | Kebutuhan | Package |
 |---|---|
-| Auth scaffolding | Starter kit Livewire berbasis Laravel Fortify (Breeze tidak lagi tercantum di dokumentasi Laravel 13) — OQ-17 |
+| Autentikasi | `laravel/fortify` headless dengan view Blade sendiri — tanpa starter kit (OQ-17 diputuskan) |
 | Export Excel/CSV | `maatwebsite/excel` |
 | Export PDF | `barryvdh/laravel-dompdf` |
 | Code style | `laravel/pint` |
@@ -491,6 +491,7 @@ Saya tidak akan menebak diam-diam. Berikut hal yang belum terjawab dari dokumen 
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.2 | 2026-09-16 | OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`; rujukan starter kit Livewire diganti; CORE PROMPT v2.1. | DevFlow |
 | 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Restrukturisasi tim menjadi 1 Project Manager + 3 Programmer.** BPMN Level 1 diganti swimlane PM, tiga programmer, dan review sejawat; aktivitas 1.8 penyusunan SRS per role; kolom pelaksana di Fase 4 & 5 (test oleh pemilik US, UAT & delivery oleh PM); Git workflow tanpa `develop` — hanya PM merge ke `main`, sub-branch `srs/`, `pm/`, `a2/`, `a3/`, `a4/`; DoR/DoD merujuk SRS & gerbang PM. | DevFlow |
 | 1.4 | 2026-09-15 | Laravel dikunci ke versi 13 (PHP ≥ 8.3); Breeze diganti starter kit Livewire + Fortify (OQ-17); MySQL ≥ 8.0.16 diasumsikan terpasang (instalasi dihapus); §6.0 merujuk `DATABASE_DESIGN.md`; konvensi §5.2 menambahkan penegakan aturan di MySQL. `PROJECT_WORKFLOW.pdf` belum diperbarui. | DevFlow |

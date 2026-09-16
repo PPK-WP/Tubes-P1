@@ -13,7 +13,7 @@
 | **SRS** | `workflow/srs/SRS_Anggota2_Data_Fasilitas_Insight.md` (FR-A2-01 s/d FR-A2-11, DR-A2) |
 | **Review sejawat** | Me-review PR Anggota 4 · PR saya direview Anggota 3 · review akhir & merge oleh PM |
 | **Beban** | 27 poin (35%) — terberat, dipantau PM (R-05) |
-| **Acuan** | `Relationship.md` v2.1 · `PROJECT_WORKFLOW.md` v2.1 · `DATABASE_DESIGN.md` v1.2 |
+| **Acuan** | `Relationship.md` v2.2 · `PROJECT_WORKFLOW.md` v2.2 · `DATABASE_DESIGN.md` v1.3 |
 
 ---
 
@@ -348,12 +348,12 @@ Soal hanya memberi **petunjuk minimal** berupa 4 tabel dan 19 atribut. Ketentuan
 
 ## 9. Prompt Overlay AI
 
-Tempel **CORE PROMPT v2.0** (`CLAUDE.md` / `Relationship.md` §13.3) lebih dulu, lalu tempel blok ini.
+Tempel **CORE PROMPT v2.1** (`CLAUDE.md` / `Relationship.md` §13.3) lebih dulu, lalu tempel blok ini.
 
 ```text
 # ═══════════════════════════════════════════════════════════
 # OVERLAY — Anggota 2 · Programmer · Data, Fasilitas & Insight
-# Dipakai bersama CORE v2.0
+# Dipakai bersama CORE v2.1
 # ═══════════════════════════════════════════════════════════
 
 ## PERAN
@@ -452,6 +452,7 @@ dashboard, rekap, export, DatabaseErrorTranslator).
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.2 | 2026-09-16 | Mengacu CORE PROMPT v2.1 (OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`). | DevFlow |
 | 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Restrukturisasi tim (1 PM + 3 Programmer).** Peran menjadi Programmer — Data, Fasilitas & Insight. US-01 dipindah ke Anggota 3; US-08 & US-17 diambil dari eks QA. Tambah FR-A2/DR-A2, branch `a2/*`, SRS, rotasi review (direview A3, me-review A4), spesifikasi ringkas dashboard & rekap, overlay CORE v2.0. Analisis hint (§8.5) dan keputusan desain (§8.1) dipertahankan. | DevFlow |
 | 1.2 | 2026-09-15 | `DATABASE_DESIGN.md`, K-13, instalasi MySQL dihapus. | DevFlow |

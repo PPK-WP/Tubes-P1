@@ -13,7 +13,7 @@
 | **SRS** | `workflow/srs/SRS_Anggota1_PM.md` (SRS induk & tata kelola) |
 | **Review** | Review akhir **semua** PR · PR milik PM direview programmer bergiliran |
 | **Beban** | Manajerial (tidak dihitung dalam poin programmer) |
-| **Acuan** | `Relationship.md` v2.1 · `PROJECT_WORKFLOW.md` v2.1 · `DATABASE_DESIGN.md` v1.2 |
+| **Acuan** | `Relationship.md` v2.2 · `PROJECT_WORKFLOW.md` v2.2 · `DATABASE_DESIGN.md` v1.3 |
 
 ---
 
@@ -280,12 +280,12 @@ flowchart LR
 
 ## 9. Prompt Overlay AI
 
-Tempel **CORE PROMPT v2.0** (`CLAUDE.md` / `Relationship.md` §13.3) lebih dulu, lalu tempel blok ini.
+Tempel **CORE PROMPT v2.1** (`CLAUDE.md` / `Relationship.md` §13.3) lebih dulu, lalu tempel blok ini.
 
 ```text
 # ═══════════════════════════════════════════════════════════
 # OVERLAY — Anggota 1 · Project Manager
-# Dipakai bersama CORE v2.0
+# Dipakai bersama CORE v2.1
 # ═══════════════════════════════════════════════════════════
 
 ## PERAN
@@ -365,6 +365,7 @@ docs/05-delivery/*, .github/CODEOWNERS, .github/pull_request_template.md
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.2 | 2026-09-16 | Mengacu CORE PROMPT v2.1 (OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`). | DevFlow |
 | 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Peran diubah dari Tech Lead menjadi Project Manager.** Pekerjaan fondasi, auth, dan US-13/14/15 dipindah ke Anggota 4. Tambah tanggung jawab: pemegang tunggal `main`, K-11/K-14/K-15, SRS induk, papan kerja, checklist gerbang merge, rencana UAT, cek akhir submit, overlay PM (CORE v2.0). | DevFlow |
 | 1.2 | 2026-09-15 | Laravel 13 + Fortify; K-13; CORE v1.2. | DevFlow |

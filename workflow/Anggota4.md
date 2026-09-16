@@ -13,7 +13,7 @@
 | **SRS** | `workflow/srs/SRS_Anggota4_Platform_Identity_Laporan.md` (FR-A4-01 s/d FR-A4-11) |
 | **Review sejawat** | Me-review PR Anggota 3 · PR saya direview Anggota 2 · review akhir & merge oleh PM |
 | **Beban** | 25 poin (32%) |
-| **Acuan** | `Relationship.md` v2.1 · `PROJECT_WORKFLOW.md` v2.1 · `DATABASE_DESIGN.md` v1.2 |
+| **Acuan** | `Relationship.md` v2.2 · `PROJECT_WORKFLOW.md` v2.2 · `DATABASE_DESIGN.md` v1.3 |
 
 ---
 
@@ -36,7 +36,7 @@ flowchart LR
         I2["A2: K-01 dan K-13<br/>tabel users dan reports + trigger"]
         I3["A2: K-04 FacilityFactory"]
         I4["PM: K-11 test plan"]
-        I5["Tim: OQ-17 starter kit"]
+        I5["Tim: OQ-17 diputuskan<br/>Blade + Fortify"]
     end
 
     subgraph WORK["Pekerjaan Anggota 4"]
@@ -90,7 +90,7 @@ flowchart LR
 | ID | Pekerjaan | FR di SRS | Poin | BR | Jatuh tempo |
 |---|---|---|---|---|---|
 | K-00 | Skeleton Laravel 13, struktur `routes/modules/*`, Pint | FR-A4-11 | 2 | — | 20 Sep |
-| K-02 | Starter kit + Fortify: registrasi, login, logout; enum `Role`; middleware `role:` | FR-A4-01..04 | 3 | BR-07, BR-08 | 21 Sep |
+| K-02 | Laravel Fortify headless + view Blade: registrasi, login, logout; enum `Role`; middleware `role:` | FR-A4-01..04 | 3 | BR-07, BR-08 | 21 Sep |
 | K-03 | Layout, navigasi per role, komponen `x-*`, pola validasi client | FR-A4-11 | 3 | BR-10 | 22 Sep |
 | K-09, K-10 | `UserFactory` per role; route map & RBAC matrix | FR-A4-04 | 2 | — | 22 Sep / 19 Sep |
 | US-13 | Admin mendaftarkan akun petugas | FR-A4-05 | 2 | BR-07 | 24 Sep |
@@ -107,7 +107,7 @@ flowchart LR
 
 | Sprint | Tanggal | Aktivitas | Branch |
 |---|---|---|---|
-| **0 — Analysis & Design** | 16–19 Sep | SRS A4; putuskan starter kit (OQ-17); route map & RBAC matrix (K-10); spesifikasi trigger laporan & kode RPT-xx untuk A2 (`DATABASE_DESIGN.md` §7.3); wireframe akun & laporan | `srs/anggota4-platform-identity-laporan` |
+| **0 — Analysis & Design** | 16–19 Sep | SRS A4; rancang halaman auth Blade; route map & RBAC matrix (K-10); spesifikasi trigger laporan & kode RPT-xx untuk A2 (`DATABASE_DESIGN.md` §7.3); wireframe akun & laporan | `srs/anggota4-platform-identity-laporan` |
 | **Fondasi** | 20–22 Sep | K-00 pagi 20 Sep → K-02 → K-03 → K-09. Setiap kontrak = PR terpisah agar cepat di-merge PM | `a4/K-00-skeleton`, `a4/K-02-auth-fortify`, `a4/K-03-komponen-ui` |
 | **1** | 23–28 Sep | US-13, US-14; US-06 dengan stub K-07 pada 27 Sep | `a4/US-13-daftar-petugas`, `a4/US-06-lapor-kerusakan` |
 | **2** | 29 Sep–3 Okt | US-07, US-15, US-11; K-07 final | `a4/US-15-verifikasi-akun`, `a4/US-11-status-laporan` |
@@ -156,7 +156,7 @@ gantt
 | Dari | Apa | Kapan paling lambat | Kalau terlambat |
 |---|---|---|---|
 | PM | K-14 repo & aturan branch; K-15 SRS disetujui | 16 / 18 Sep | Siapkan kode skeleton lokal, PR setelah repo siap |
-| Tim | OQ-17 keputusan starter kit | 18 Sep | Pakai Livewire starter kit (default) |
+| Tim | OQ-17 sudah diputuskan: tanpa starter kit, Blade + Fortify headless | — | — |
 | A2 | K-01 & K-13: tabel `users`, `reports`, trigger laporan | 21–23 Sep | Pakai migration users bawaan Laravel 13 + kolom dari `DATABASE_DESIGN.md` §5.1; test trigger menyusul |
 | A2 | K-04 `FacilityFactory` | 22 Sep | Form & Form Request US-06 dikerjakan dulu |
 | PM | K-11 test plan | 22 Sep | Tulis feature test akses per role dulu |
@@ -175,13 +175,13 @@ gantt
 
 ### 6.3 Tools
 
-Git + GitHub · Composer · Laravel installer · PHP ≥ 8.3 · MySQL ≥ 8.0.16 + Workbench (setelan K-12) · Laravel 13 · starter kit Livewire + Laravel Fortify · Laravel Pint · VS Code · browser DevTools.
+Git + GitHub · Composer · Laravel installer · PHP ≥ 8.3 · MySQL ≥ 8.0.16 + Workbench (setelan K-12) · Laravel 13 (Blade, tanpa starter kit) · Laravel Fortify · Laravel Pint · VS Code · browser DevTools.
 
 ### 6.4 Referensi
 
 | Topik | Referensi |
 |---|---|
-| Starter kit & Fortify (Laravel 13) | https://laravel.com/docs/13.x/starter-kits · https://laravel.com/docs/13.x/fortify |
+| Fortify & Blade (Laravel 13) | https://laravel.com/docs/13.x/fortify · https://laravel.com/docs/13.x/blade |
 | Middleware & Policy | https://laravel.com/docs/13.x/middleware · https://laravel.com/docs/13.x/authorization |
 | Blade components | https://laravel.com/docs/13.x/blade#components |
 | Upload & storage | https://laravel.com/docs/13.x/filesystem · https://laravel.com/docs/13.x/validation |
@@ -227,6 +227,8 @@ app/Policies/UserPolicy.php
 app/Policies/ReportPolicy.php
 resources/views/layouts/*
 resources/views/components/*
+resources/views/auth/*
+public/css/*, public/js/*
 resources/views/admin/users/*
 resources/views/reports/*
 resources/views/staff/reports/*
@@ -292,12 +294,12 @@ Validasi mime & ukuran di server, `accept="image/*"` di client, nama file dibuat
 
 ## 9. Prompt Overlay AI
 
-Tempel **CORE PROMPT v2.0** (`CLAUDE.md` / `Relationship.md` §13.3) lebih dulu, lalu tempel blok ini.
+Tempel **CORE PROMPT v2.1** (`CLAUDE.md` / `Relationship.md` §13.3) lebih dulu, lalu tempel blok ini.
 
 ```text
 # ═══════════════════════════════════════════════════════════
 # OVERLAY — Anggota 4 · Programmer · Platform, Identity & Laporan
-# Dipakai bersama CORE v2.0
+# Dipakai bersama CORE v2.1
 # ═══════════════════════════════════════════════════════════
 
 ## PERAN
@@ -315,7 +317,7 @@ US-11 FR-A4-10 Ubah status laporan + catatan resolusi
 
 ## KONTRAK YANG SAYA SEDIAKAN (tanda tangan wajib stabil)
 K-00 Skeleton Laravel 13, routes/modules/*.php, Laravel Pint
-K-02 Starter kit Livewire + Fortify; enum Role {admin, petugas, pengguna};
+K-02 Laravel Fortify headless + view Blade sendiri; enum Role {admin, petugas, pengguna};
      middleware alias "role" (role:admin / role:petugas / role:pengguna)
 K-03 Layout + komponen x-input, x-button, x-alert, x-status-badge, x-table
 K-07 Report::open() (status new|in_progress), relasi Facility::reports()
@@ -384,7 +386,7 @@ README, .env.example, credentials.md).
 | "Bagaimana mencegah orang mendaftar sebagai petugas?" | Role di-set di `CreateNewUser`; input role diabaikan; akun petugas hanya lewat route `role:admin` |
 | "Kalau saya ketik URL `/admin/...` sebagai pengguna?" | Middleware role → 403; Policy lapis kedua |
 | "Beda middleware dan Policy?" | Middleware menjaga **area**; Policy menjaga **objek** |
-| "Laravel versi berapa? Pakai Breeze?" | Laravel 13 (PHP ≥ 8.3); Breeze tidak lagi tercantum di dokumentasi 13; autentikasi memakai starter kit berbasis Fortify |
+| "Laravel versi berapa? Pakai Breeze?" | Laravel 13 (PHP ≥ 8.3); Breeze tidak lagi tercantum di dokumentasi 13; autentikasi memakai Laravel Fortify dengan tampilan Blade buatan sendiri, tanpa starter kit |
 | "Kalau yang di-upload bukan gambar?" | Validasi server memeriksa jenis file sebenarnya & ukuran; nama file dibuat ulang |
 | "Di mana pemisahan koneksi DB, tampilan, dan logika?" | `config/database.php` + `.env` · `resources/views` · `app/Http`, `app/Services`, `app/Policies` |
 
@@ -394,6 +396,7 @@ README, .env.example, credentials.md).
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.2 | 2026-09-16 | OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`; rujukan starter kit Livewire diganti; CORE PROMPT v2.1. | DevFlow |
 | 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Peran diubah menjadi Programmer — Platform, Identity & Laporan.** Mengambil alih fondasi (K-00, K-02, K-03, K-09, K-10) dan US-13/14/15 dari eks Tech Lead; tetap memegang US-06/07/11 dan K-07. US-08, US-17 dipindah ke Anggota 2; test plan & UAT ke PM. Tambah FR-A4, branch `a4/*`, SRS, rotasi review, overlay CORE v2.0. | DevFlow |
 | 1.2 | 2026-09-15 | K-13, dashboard/rekap via view MySQL, test di MySQL. | DevFlow |
