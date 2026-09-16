@@ -1,0 +1,8 @@
+# CODEOWNERS — Kontrak K-14 (Relationship.md §10.5)
+# Project Manager wajib me-review setiap Pull Request ke main.
+#
+# LANGKAH PM: hapus tanda '#' pada baris terakhir dan ganti username-github-pm
+# dengan username GitHub Project Manager (OQ-08), lalu aktifkan
+# "Require review from Code Owners" pada proteksi branch main.
+#
+# * @username-github-pm

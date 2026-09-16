@@ -1,0 +1,27 @@
+# --- Laravel (akan dilengkapi Anggota 4 saat skeleton K-00) ---
+/vendor/
+/node_modules/
+/public/build/
+/public/hot
+/public/storage
+/storage/*.key
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
+
+# --- Editor & OS ---
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+
+# --- Proyek ---
+# Overlay prompt AI pribadi (lihat CLAUDE.md §9)
+CLAUDE.local.md
+# File uji jebakan AI — tidak pernah di-commit (Relationship.md GIT-11)
+test-jebakan.md
+# PDF hasil ekspor dokumen & soal di root (artefak lokal, dibuat ulang dari .md)
+/*.pdf
