@@ -4,7 +4,7 @@
 |---|---|
 | **Untuk** | Anggota 1 — Project Manager, pemegang tunggal `main` |
 | **Tujuan** | Membuat asisten AI bekerja sesuai peran, SRS, dan aturan tim tanpa perlu dijelaskan ulang setiap sesi |
-| **Dipakai bersama** | CORE PROMPT v2.0 (`workflow/CLAUDE.md` §8) |
+| **Dipakai bersama** | CORE PROMPT v2.1 (`workflow/CLAUDE.md` §8) |
 | **SRS** | SRS-A1 — branch `srs/anggota1-pm` · PDF `workflow_pdf/srs/SRS_Anggota1_PM.pdf` |
 | **Panduan kerja** | `workflow/Anggota1.md` |
 
@@ -18,7 +18,7 @@
 | ChatGPT / Gemini / Claude web | Tempel isi `workflow/CLAUDE.md` §8 (CORE) di *project instructions*, lalu tempel blok §3 di pesan pertama |
 | GitHub Copilot / Cursor | CORE di `.github/copilot-instructions.md` atau `.cursor/rules/core.mdc`; blok §3 di aturan lokal |
 
-**Uji pemasangan:** tanyakan *"Siapa saya dan apa yang boleh kamu kerjakan di repo ini?"* Jawaban yang benar menyebut **CORE v2.0 + Anggota 1 (Project Manager)**, menyebut bahwa kamu satu-satunya yang merge ke `main`, dan menolak menulis kode fitur.
+**Uji pemasangan:** tanyakan *"Siapa saya dan apa yang boleh kamu kerjakan di repo ini?"* Jawaban yang benar menyebut **CORE v2.1 + Anggota 1 (Project Manager)**, menyebut bahwa kamu satu-satunya yang merge ke `main`, dan menolak menulis kode fitur.
 
 ---
 
@@ -29,7 +29,7 @@
 | Repo | Folder `TubesPPK` (root repo). Dokumen di `workflow/`, PDF di `workflow_pdf/` |
 | Branch | `main` (hanya kamu yang merge) · kerja pribadi `pm/<topik>` · SRS `srs/anggota1-pm` |
 | SRS semua role | Branch `srs/anggota1-pm`, `srs/anggota2-data-fasilitas-insight`, `srs/anggota3-reservasi-ketersediaan`, `srs/anggota4-platform-identity-laporan` (file `docs/srs/…` di tiap branch) |
-| Stack | Laravel 13 · PHP ≥ 8.3 · Livewire + Fortify · MySQL ≥ 8.0.16 |
+| Stack | Laravel 13 · PHP ≥ 8.3 · Blade + Laravel Fortify (tanpa starter kit) · MySQL ≥ 8.0.16 |
 | Fase saat ini | Analysis & Design — Design Freeze G1 pada 19 Sep |
 
 ---
@@ -39,7 +39,7 @@
 ```text
 # ═══════════════════════════════════════════════════════════════
 # PERSONALISASI AI — Anggota 1 · Project Manager
-# Dipakai bersama CORE v2.0 (workflow/CLAUDE.md)
+# Dipakai bersama CORE v2.1 (workflow/CLAUDE.md)
 # ═══════════════════════════════════════════════════════════════
 
 ## SIAPA SAYA
@@ -241,4 +241,5 @@ perbaikannya, urut dari yang paling berisiko terhadap deadline 11 Okt 12.00.
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 1.1 | 2026-09-16 | OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`; rujukan starter kit Livewire diganti; CORE PROMPT v2.1. | DevFlow |
 | 1.0 | 2026-09-16 | Dokumen awal personalisasi AI Anggota 1: cara pasang, lingkungan kerja, blok `CLAUDE.local.md`, 12 prompt tugas, prompt rutin, checklist PR. | DevFlow |

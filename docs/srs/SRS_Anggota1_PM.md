@@ -7,7 +7,7 @@
 | **Pemilik** | Anggota 1 — Project Manager |
 | **Penelaah** | Anggota 2, 3, 4 (satu programmer me-review PR branch ini) |
 | **Branch** | `srs/anggota1-pm` |
-| **Status** | DRAFT 1.0 — disahkan bersama tiga SRS programmer paling lambat 18 Sep 2026 (K-15) |
+| **Status** | DRAFT 1.1 — disahkan bersama tiga SRS programmer paling lambat 18 Sep 2026 (K-15) |
 | **Acuan** | `Project PPK 2026.pdf` · `PROJECT_WORKFLOW.md` v2.0 · `Relationship.md` v2.0 · `DATABASE_DESIGN.md` v1.1 · `Anggota1.md` v2.0 |
 
 ---
@@ -102,7 +102,7 @@ flowchart LR
 
 | Komponen | Ketentuan |
 |---|---|
-| Framework | Laravel 13 (PHP ≥ 8.3), starter kit Livewire + Laravel Fortify |
+| Framework | Laravel 13 (PHP ≥ 8.3), Blade standar tanpa starter kit, Laravel Fortify headless; CSS/JS polos di `public/` |
 | Database | MySQL Server ≥ 8.0.16, InnoDB, `utf8mb4` — terpasang di laptop tiap anggota |
 | Klien | Peramban desktop modern (Chrome, Firefox, Edge versi terbaru) |
 | Penyebaran | Lokal (`php artisan serve`); source & SQL dikumpulkan lewat Google Drive |
@@ -202,7 +202,7 @@ Default semua isu terbuka tercantum di §7. Asumsi yang memengaruhi lebih dari s
 | GOV-08 | Tag milestone dibuat PM: `v0.1-fondasi`, `v0.2-sprint1`, `v0.3-feature-complete`, `v1.0-uts` |
 | GOV-09 | Perubahan kebutuhan setelah G1 melalui Change Request yang diputuskan PM; versi SRS terkait dinaikkan |
 | GOV-10 | Proteksi `main` (wajib PR, review Code Owner, blokir force push) diaktifkan bila tersedia; bila tidak, GOV-02 diawasi PM |
-| GOV-11 | Asisten AI tiap anggota memakai CORE PROMPT v2.0 (`CLAUDE.md`) ditambah overlay perannya |
+| GOV-11 | Asisten AI tiap anggota memakai CORE PROMPT v2.1 (`CLAUDE.md`) ditambah overlay perannya |
 
 ### 3.5 Kebutuhan penerimaan
 
@@ -295,7 +295,7 @@ flowchart LR
 | OQ-08 | Nama, NIM, username GitHub; siapa PM | Belum diisi |
 | OQ-13 | Nilai enum | English di DB, label Indonesia |
 | OQ-15 | Tool AI tiap anggota | — |
-| OQ-17 | Starter kit | Livewire + Fortify |
+| OQ-17 | Starter kit | **Diputuskan:** tanpa starter kit — Blade + Fortify |
 | OQ-18 | Status `expired` + event | Usulan (prioritas C) |
 | OQ-19 | ENUM vs tabel master | ENUM |
 | OQ-20 | Pemilik boleh batal reservasi approved | Boleh |
@@ -320,4 +320,5 @@ flowchart LR
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 1.1 | 2026-09-16 | OQ-17 diputuskan: Laravel 13 standar + Blade tanpa starter kit, Laravel Fortify headless, CSS/JS polos di `public/`. | DevFlow |
 | 1.0 | 2026-09-16 | Draf awal SRS induk: struktur SRS proyek, deskripsi sistem, batasan C-01..C-10, indeks FR per US, aturan bisnis global beserta penegakannya, NFR-G-01..10, tata kelola GOV-01..11 (hanya PM merge ke `main`), penerimaan UAT-01..07, delivery DLV-01..09, matriks traceability induk, alur Change Request, isu terbuka. | DevFlow |
