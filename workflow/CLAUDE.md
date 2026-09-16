@@ -198,14 +198,16 @@ BR-10 Validasi server dan client untuk form penting.
 
 ## 9. Overlay Pribadi
 
-Buat `CLAUDE.local.md` di root repo (sudah di-*ignore* git), lalu salin blok overlay dari file peranmu:
+Buat `CLAUDE.local.md` di root repo (sudah di-*ignore* git), lalu salin **blok personalisasi §3** dari berkas peranmu. Berkas ini juga memuat prompt siap pakai per tugas:
 
 | Peran | Salin dari |
 |---|---|
-| Project Manager | `Anggota1.md` §9 |
-| Programmer — Data, Fasilitas & Insight | `Anggota2.md` §9 |
-| Programmer — Reservation Engine & Ketersediaan | `Anggota3.md` §9 |
-| Programmer — Platform, Identity & Laporan | `Anggota4.md` §9 |
+| Project Manager | `workflow/srs_anggota1.md` §3 |
+| Programmer — Data, Fasilitas & Insight | `workflow/srs_anggota2.md` §3 |
+| Programmer — Reservation Engine & Ketersediaan | `workflow/srs_anggota3.md` §3 |
+| Programmer — Platform, Identity & Laporan | `workflow/srs_anggota4.md` §3 |
+
+Overlay ringkas di `AnggotaN.md` §9 tetap berlaku sebagai versi dasar.
 
 Tanpa overlay, AI hanya tahu aturan umum tim dan akan menanyakan peranmu sebelum mengerjakan tugas yang terikat kepemilikan.
 
@@ -219,5 +221,6 @@ Lihat `Relationship.md` §17 dan `workflow/srs/SRS_Anggota1_PM.md` §7. Yang pal
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 1.2 | 2026-09-16 | §9 merujuk berkas personalisasi AI `workflow/srs_anggota1.md` s/d `srs_anggota4.md`. | DevFlow |
 | 1.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 1.0 | 2026-09-16 | Dokumen awal: ringkasan proyek, protokol bahasa & persona DevFlow, komposisi 1 PM + 3 Programmer, aturan branch, peta dokumen, status, log keputusan sesi 9–16 Sep, CORE PROMPT v2.0 (diambil dari `Relationship.md` §13.3), cara memasang overlay pribadi. | DevFlow |
