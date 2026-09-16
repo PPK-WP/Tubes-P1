@@ -10,10 +10,10 @@
 | **Kontrak disediakan** | K-11 (test plan & UAT), K-14 (governance repo & branch), K-15 (SRS disetujui) |
 | **Kontrak dipantau** | Seluruh K-00 s/d K-13 (status & jatuh tempo) |
 | **Branch** | Satu-satunya yang merge ke `main` · kerja sendiri di `pm/*` · SRS di `srs/anggota1-pm` |
-| **SRS** | `docs/srs/SRS_Anggota1_PM.md` (SRS induk & tata kelola) |
+| **SRS** | `workflow/srs/SRS_Anggota1_PM.md` (SRS induk & tata kelola) |
 | **Review** | Review akhir **semua** PR · PR milik PM direview programmer bergiliran |
 | **Beban** | Manajerial (tidak dihitung dalam poin programmer) |
-| **Acuan** | `Relationship.md` v2.0 · `PROJECT_WORKFLOW.md` v2.0 · `DATABASE_DESIGN.md` v1.1 |
+| **Acuan** | `Relationship.md` v2.1 · `PROJECT_WORKFLOW.md` v2.1 · `DATABASE_DESIGN.md` v1.2 |
 
 ---
 
@@ -84,7 +84,7 @@ flowchart LR
 | ID | Pekerjaan | Artefak | Jatuh tempo |
 |---|---|---|---|
 | K-14 | Buat repo proyek terpisah, GitHub repo, undang anggota, proteksi `main`, CODEOWNERS, template PR, label | `.github/CODEOWNERS`, `.github/pull_request_template.md` | **16 Sep** |
-| K-15 | SRS induk + review & persetujuan 3 SRS programmer | `docs/srs/SRS_Anggota1_PM.md`, merge branch `srs/*` | **18 Sep** |
+| K-15 | SRS induk + review & persetujuan 3 SRS programmer | `workflow/srs/SRS_Anggota1_PM.md`, merge branch `srs/*` | **18 Sep** |
 | G1 | Pimpin Design Freeze: SRS + `DATABASE_DESIGN.md` + route map disahkan | Catatan keputusan G1 | 19 Sep |
 | K-11 | Test plan, template test case, jadwal UAT | `docs/04-testing/test-plan.md` | 22 Sep |
 | — | Papan GitHub Projects: satu issue per US & kontrak | Board + issue | 22 Sep |
@@ -184,10 +184,10 @@ GitHub (branch protection/ruleset, CODEOWNERS, Pull Request, Issues, Projects) �
 ```
 Branch  : main (merge saja, tidak push langsung) · pm/* · srs/anggota1-pm
 File    :
-PROJECT_WORKFLOW.md
-Relationship.md
-CLAUDE.md
-docs/srs/SRS_Anggota1_PM.md
+workflow/PROJECT_WORKFLOW.md
+workflow/Relationship.md
+workflow/CLAUDE.md
+workflow/srs/SRS_Anggota1_PM.md
 docs/TRACEABILITY.md
 docs/04-testing/test-plan.md
 docs/04-testing/uat-report.md
@@ -201,7 +201,7 @@ tests/Acceptance/*                  (opsional: skenario UAT otomatis)
 
 ## 8. Spesifikasi Kunci
 
-Kebutuhan formal PM ada di **`docs/srs/SRS_Anggota1_PM.md`**. Bagian ini adalah panduan kerja.
+Kebutuhan formal PM ada di **`workflow/srs/SRS_Anggota1_PM.md`**. Bagian ini adalah panduan kerja.
 
 ### 8.1 Setup governance repo (K-14)
 
@@ -294,7 +294,7 @@ tata kelola repo & branch, integrasi ke main, traceability, UAT, dan
 delivery. Kamu TIDAK menulis kode fitur aplikasi.
 
 ## TANGGUNG JAWAB
-- SRS induk (docs/srs/SRS_Anggota1_PM.md) & persetujuan SRS A2/A3/A4
+- SRS induk (workflow/srs/SRS_Anggota1_PM.md) & persetujuan SRS A2/A3/A4
 - K-11 test plan & UAT · K-14 governance repo · K-15 SRS disetujui
 - Satu-satunya yang merge PR ke main; tag rilis v0.x dan v1.0-uts
 - Keputusan Change Request; traceability US → FR → artefak → test
@@ -307,7 +307,7 @@ delivery. Kamu TIDAK menulis kode fitur aplikasi.
 
 ## FILE MILIK SAYA
 PROJECT_WORKFLOW.md, Relationship.md, CLAUDE.md,
-docs/srs/SRS_Anggota1_PM.md, docs/TRACEABILITY.md, docs/04-testing/*,
+workflow/srs/SRS_Anggota1_PM.md, docs/TRACEABILITY.md, docs/04-testing/*,
 docs/05-delivery/*, .github/CODEOWNERS, .github/pull_request_template.md
 
 ## FOKUS KHUSUS
@@ -365,6 +365,7 @@ docs/05-delivery/*, .github/CODEOWNERS, .github/pull_request_template.md
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Peran diubah dari Tech Lead menjadi Project Manager.** Pekerjaan fondasi, auth, dan US-13/14/15 dipindah ke Anggota 4. Tambah tanggung jawab: pemegang tunggal `main`, K-11/K-14/K-15, SRS induk, papan kerja, checklist gerbang merge, rencana UAT, cek akhir submit, overlay PM (CORE v2.0). | DevFlow |
 | 1.2 | 2026-09-15 | Laravel 13 + Fortify; K-13; CORE v1.2. | DevFlow |
 | 1.1 | 2026-09-15 | K-12 standar DBMS. | DevFlow |

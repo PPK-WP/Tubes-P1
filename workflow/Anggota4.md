@@ -10,10 +10,10 @@
 | **Kontrak disediakan** | K-00 skeleton, K-02 auth & role, K-03 komponen UI, K-07 scope laporan, K-09 UserFactory, K-10 konvensi route |
 | **Kontrak dipakai** | K-01, K-04, K-08, K-12, K-13 (A2) · K-11, K-14, K-15 (PM) |
 | **Branch** | Kerja di `a4/*` · SRS di `srs/anggota4-platform-identity-laporan` · **tidak pernah push ke `main`** |
-| **SRS** | `docs/srs/SRS_Anggota4_Platform_Identity_Laporan.md` (FR-A4-01 s/d FR-A4-11) |
+| **SRS** | `workflow/srs/SRS_Anggota4_Platform_Identity_Laporan.md` (FR-A4-01 s/d FR-A4-11) |
 | **Review sejawat** | Me-review PR Anggota 3 · PR saya direview Anggota 2 · review akhir & merge oleh PM |
 | **Beban** | 25 poin (32%) |
-| **Acuan** | `Relationship.md` v2.0 · `PROJECT_WORKFLOW.md` v2.0 · `DATABASE_DESIGN.md` v1.1 |
+| **Acuan** | `Relationship.md` v2.1 · `PROJECT_WORKFLOW.md` v2.1 · `DATABASE_DESIGN.md` v1.2 |
 
 ---
 
@@ -194,7 +194,7 @@ Git + GitHub · Composer · Laravel installer · PHP ≥ 8.3 · MySQL ≥ 8.0.16
 ```
 Branch  : a4/<ID>-<slug> · srs/anggota4-platform-identity-laporan
 File    :
-docs/srs/SRS_Anggota4_Platform_Identity_Laporan.md
+workflow/srs/SRS_Anggota4_Platform_Identity_Laporan.md
 docs/02-design/route-map.md
 docs/02-design/rbac-matrix.md
 README.md
@@ -394,6 +394,7 @@ README, .env.example, credentials.md).
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Peran diubah menjadi Programmer — Platform, Identity & Laporan.** Mengambil alih fondasi (K-00, K-02, K-03, K-09, K-10) dan US-13/14/15 dari eks Tech Lead; tetap memegang US-06/07/11 dan K-07. US-08, US-17 dipindah ke Anggota 2; test plan & UAT ke PM. Tambah FR-A4, branch `a4/*`, SRS, rotasi review, overlay CORE v2.0. | DevFlow |
 | 1.2 | 2026-09-15 | K-13, dashboard/rekap via view MySQL, test di MySQL. | DevFlow |
 | 1.1 | 2026-09-15 | K-12 standar DBMS. | DevFlow |

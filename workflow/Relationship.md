@@ -1,11 +1,11 @@
 # Relationship.md — Peta Relasi Kerja Tim
 
 **Proyek:** Sistem Reservasi & Pelaporan Fasilitas Kampus (PPK 2026 — UTS)
-**Acuan:** `PROJECT_WORKFLOW.md` · `DATABASE_DESIGN.md` · `Project PPK 2026.pdf` · SRS per role (`docs/srs/`)
+**Acuan:** `PROJECT_WORKFLOW.md` · `DATABASE_DESIGN.md` · `Project PPK 2026.pdf` · SRS per role (`workflow/srs/`)
 **Tim:** 4 anggota — **1 Project Manager + 3 Programmer**
 **Periode kerja:** 16 Sep – 10 Okt 2026 · **Hard deadline:** 11 Okt 2026, 12.00 WIB
 **Status dokumen:** DRAFT v2.0 — disahkan PM bersama SRS sebelum Design Freeze G1 (19 Sep)
-**Versi:** 2.0
+**Versi:** 2.1
 
 > Dokumen ini adalah **satu-satunya sumber kebenaran** untuk pembagian kerja, kontrak antar anggota, tata kelola branch, dan *CORE PROMPT* AI tim. File `Anggota1.md` s/d `Anggota4.md` dan keempat SRS merujuk ke sini.
 
@@ -362,7 +362,7 @@ Aturan: **hanya pemilik yang mengedit**. Butuh perubahan di file orang lain → 
 
 | Area | Anggota 1 — PM | Anggota 2 — Data & Insight | Anggota 3 — Reservasi | Anggota 4 — Platform & Laporan |
 |---|---|---|---|---|
-| Dokumen | `PROJECT_WORKFLOW.md`, `Relationship.md`, `CLAUDE.md`, `docs/srs/SRS_Anggota1_PM.md`, `docs/TRACEABILITY.md`, `docs/04-testing/*`, `docs/05-delivery/*` | `DATABASE_DESIGN.md`, `docs/srs/SRS_Anggota2_*.md`, `docs/02-design/eer-model.mwb`, `data-dictionary.md` | `docs/srs/SRS_Anggota3_*.md`, `docs/02-design/state-machine.md` | `docs/srs/SRS_Anggota4_*.md`, `docs/02-design/route-map.md`, `rbac-matrix.md` |
+| Dokumen | `workflow/PROJECT_WORKFLOW.md`, `workflow/Relationship.md`, `workflow/CLAUDE.md`, `workflow/srs/SRS_Anggota1_PM.md`, `docs/TRACEABILITY.md`, `docs/04-testing/*`, `docs/05-delivery/*` | `workflow/DATABASE_DESIGN.md`, `workflow/srs/SRS_Anggota2_*.md`, `docs/02-design/eer-model.mwb`, `data-dictionary.md` | `workflow/srs/SRS_Anggota3_*.md`, `docs/02-design/state-machine.md` | `workflow/srs/SRS_Anggota4_*.md`, `docs/02-design/route-map.md`, `rbac-matrix.md` |
 | Repo & rilis | `.github/CODEOWNERS`, `.github/pull_request_template.md`, tag rilis | — | — | `README.md`, `.env.example`, `.gitignore` |
 | Route | — | `routes/modules/facilities.php`, `dashboard.php`, `recap.php` | `routes/modules/reservations.php` (termasuk ketersediaan) | `routes/web.php` (hanya `require`), `auth.php`, `admin-users.php`, `reports.php` |
 | Database | — | `database/migrations/*`, `database/sql/*`, `DatabaseSeeder.php`, `FacilitySeeder.php`, `database/dump/final.sql` | `ReservationSeeder.php` | `UserSeeder.php`, `ReportSeeder.php` |
@@ -510,10 +510,10 @@ Isi template PR:
 
 | Branch | File | Pemilik | Disetujui |
 |---|---|---|---|
-| `srs/anggota1-pm` | `docs/srs/SRS_Anggota1_PM.md` | Anggota 1 | Programmer (review) → PM merge |
-| `srs/anggota2-data-fasilitas-insight` | `docs/srs/SRS_Anggota2_Data_Fasilitas_Insight.md` | Anggota 2 | PM |
-| `srs/anggota3-reservasi-ketersediaan` | `docs/srs/SRS_Anggota3_Reservasi_Ketersediaan.md` | Anggota 3 | PM |
-| `srs/anggota4-platform-identity-laporan` | `docs/srs/SRS_Anggota4_Platform_Identity_Laporan.md` | Anggota 4 | PM |
+| `srs/anggota1-pm` | `workflow/srs/SRS_Anggota1_PM.md` | Anggota 1 | Programmer (review) → PM merge |
+| `srs/anggota2-data-fasilitas-insight` | `workflow/srs/SRS_Anggota2_Data_Fasilitas_Insight.md` | Anggota 2 | PM |
+| `srs/anggota3-reservasi-ketersediaan` | `workflow/srs/SRS_Anggota3_Reservasi_Ketersediaan.md` | Anggota 3 | PM |
+| `srs/anggota4-platform-identity-laporan` | `workflow/srs/SRS_Anggota4_Platform_Identity_Laporan.md` | Anggota 4 | PM |
 
 Perubahan SRS setelah disetujui dilakukan di branch `srs/…` yang sama (atau dibuat ulang dari `main`), dengan versi SRS dinaikkan dan dicatat di changelog SRS.
 
@@ -759,7 +759,7 @@ BR-10 Validasi server dan client untuk form penting.
 
 | Tool AI | Core | Overlay |
 |---|---|---|
-| Claude Code | `CLAUDE.md` di root repo (sudah di `main`, berlaku otomatis) | `CLAUDE.local.md` pribadi (di-*ignore* git), isi = blok overlay dari `AnggotaN.md` §9 |
+| Claude Code | `CLAUDE.md` di root repo — mengimpor `workflow/CLAUDE.md`, berlaku otomatis | `CLAUDE.local.md` pribadi (di-*ignore* git), isi = blok overlay dari `AnggotaN.md` §9 |
 | GitHub Copilot | `.github/copilot-instructions.md` (salinan blok §13.3) | Tempel di awal chat |
 | Cursor | `.cursor/rules/core.mdc` | `.cursor/rules/role.mdc` (lokal) |
 | ChatGPT / Gemini / Claude web | Custom / project instructions | Tempel di pesan pertama |
@@ -857,6 +857,7 @@ Tanya jawab: pertanyaan dijawab **pemilik modul**; PM menjawab pertanyaan proses
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Restrukturisasi tim menjadi 1 Project Manager + 3 Programmer.** US dipetakan ulang (A2: US-02/08/12/16/17; A3: US-01/03/04/05/09/10; A4: US-06/07/11/13/14/15). PM memegang `main` sendirian. Tambah §10 tata kelola git & branch (sub-branch per role, branch `srs/*`, alur PR, aturan GIT-01..12, proteksi GitHub, template PR), kontrak K-14 governance & K-15 SRS, rujukan FR per US, kepemilikan file baru, timeline mulai 16 Sep, CORE PROMPT v2.0 (AI-11 branch, AI-12 SRS, AI-13 test), risiko R-02 bottleneck PM & R-03 push ke main, presentasi & dokumen Word dipimpin PM, OQ-23. | DevFlow |
 | 1.2 | 2026-09-15 | Instalasi MySQL dihapus; `DATABASE_DESIGN.md` masuk critical path; K-13; CORE v1.2 (Laravel 13, Fortify, RDBMS). | DevFlow |
 | 1.1 | 2026-09-15 | Kontrak K-12 standar DBMS; CORE v1.1; risiko DBMS. | DevFlow |

@@ -7,7 +7,7 @@
 **Pemilik:** Anggota 2 (Programmer — Data, Fasilitas & Insight) · kontributor spesifikasi: Anggota 3 (reservasi & ketersediaan), Anggota 4 (akun & laporan) · disahkan & di-merge ke `main` oleh PM (Anggota 1)
 **Kontrak:** K-12 standar koneksi (§14) · K-13 objek RDBMS (§5–§10, §13) — lihat `Relationship.md` §7
 **Status:** DRAFT — bahan review EER 17 Sep, dibekukan di Design Freeze G1 (19 Sep)
-**Versi:** 1.1
+**Versi:** 1.2
 
 > Dokumen ini adalah **sumber tunggal** rancangan database. Semua SQL di sini adalah **spesifikasi desain** yang diuji di MySQL Workbench. SQL ini baru menjadi migration setelah G1 disetujui.
 
@@ -1173,5 +1173,6 @@ Semua file `database/sql/*` dan migration tetap **dimiliki tunggal oleh Anggota 
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 1.2 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 1.1 | 2026-09-16 | Menyesuaikan restrukturisasi tim (1 PM + 3 Programmer): penulis Q-01 → A3, Q-08/Q-16/Q-17 → A2, Q-13/Q-14 → A4; titik kait Fortify → A4; kepemilikan spesifikasi objek DB (§15) — grid publik ke A3, dashboard & rekap ke A2, reviewer eks Tech Lead diganti A4; merge ke `main` oleh PM; rujukan D-1 diperbaiki ke `Anggota2.md` §8.1. | DevFlow |
 | 1.0 | 2026-09-15 | Dokumen awal: peran RDBMS (validasi, eksekusi interaksi, rekap), brainstorming 18 mekanisme MySQL, lapisan pertahanan, ERD fisik 9 tabel, DDL MySQL ≥ 8.0.16 dengan CHECK & generated column, tabel `time_slots` & `reservation_slots` (anti-bentrok berbasis UNIQUE), skrip uji aturan waktu, 8 trigger + katalog kode error, 5 view, 4 stored procedure, event scheduler, diagram eksekusi interaksi, katalog query revisi, integrasi Laravel 13 (Fortify, migration objek DB, factory, error, zona waktu, testing, dump), standar koneksi K-12 tanpa instalasi, kepemilikan objek DB, OQ-17..OQ-22. | DevFlow |

@@ -10,10 +10,10 @@
 | **Kontrak disediakan** | K-05 TimeSlot, K-06 scope reservasi |
 | **Kontrak dipakai** | K-00, K-02, K-03, K-09 (A4) · K-01, K-04, K-12, K-13 (A2) · K-11, K-14, K-15 (PM) |
 | **Branch** | Kerja di `a3/*` · SRS di `srs/anggota3-reservasi-ketersediaan` · **tidak pernah push ke `main`** |
-| **SRS** | `docs/srs/SRS_Anggota3_Reservasi_Ketersediaan.md` (FR-A3-01 s/d FR-A3-09) |
+| **SRS** | `workflow/srs/SRS_Anggota3_Reservasi_Ketersediaan.md` (FR-A3-01 s/d FR-A3-09) |
 | **Review sejawat** | Me-review PR Anggota 2 · PR saya direview Anggota 4 · review akhir & merge oleh PM |
 | **Beban** | 26 poin (33%) |
-| **Acuan** | `Relationship.md` v2.0 · `PROJECT_WORKFLOW.md` v2.0 · `DATABASE_DESIGN.md` v1.1 |
+| **Acuan** | `Relationship.md` v2.1 · `PROJECT_WORKFLOW.md` v2.1 · `DATABASE_DESIGN.md` v1.2 |
 
 ---
 
@@ -191,7 +191,7 @@ Laravel 13 Artisan · PHPUnit/Pest · Tinker · MySQL Workbench (`EXPLAIN`, uji 
 ```
 Branch  : a3/<ID>-<slug> · srs/anggota3-reservasi-ketersediaan
 File    :
-docs/srs/SRS_Anggota3_Reservasi_Ketersediaan.md
+workflow/srs/SRS_Anggota3_Reservasi_Ketersediaan.md
 docs/02-design/state-machine.md               (reservasi)
 config/reservation.php                        (jam operasional; batas pembatalan di system_settings)
 app/Support/TimeSlot.php
@@ -376,6 +376,7 @@ controller reservasi & ketersediaan, view, factory, test).
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Restrukturisasi tim (1 PM + 3 Programmer).** Peran menjadi Programmer — Reservation Engine & Ketersediaan; US-01 grid ketersediaan diambil dari Anggota 2. Spesifikasi rinci (V-1..V-8, T-1..T-10, race condition, privasi) dipindah ke SRS Anggota 3. Tambah FR-A3, branch `a3/*`, rotasi review (direview A4, me-review A2), overlay CORE v2.0. | DevFlow |
 | 1.2 | 2026-09-15 | Pembagian aturan Laravel vs MySQL, status `expired`, `system_settings`. | DevFlow |
 | 1.1 | 2026-09-15 | K-12 standar DBMS. | DevFlow |

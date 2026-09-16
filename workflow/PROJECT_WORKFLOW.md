@@ -6,7 +6,7 @@
 **Metodologi:** SDLC (Waterfall-inkremental) + pemodelan proses BPMN
 **Deadline pengumpulan:** 11 Oktober 2026, 12.00 WIB (via Kulon)
 **Tim:** 1 Project Manager + 3 Programmer (`Relationship.md` §1)
-**Versi dokumen:** 2.0
+**Versi dokumen:** 2.1
 
 ---
 
@@ -235,7 +235,7 @@ flowchart TB
 | 1.4 | Pemodelan BPMN proses bisnis | BR + user story | Diagram Mermaid di SRS | Mermaid |
 | 1.5 | Definisi role & permission matrix | Daftar aktor | `docs/01-analysis/rbac-matrix.md` | Markdown |
 | 1.6 | Pembagian tugas anggota tim | Backlog | `Relationship.md`, `Anggota1.md`–`Anggota4.md` | Markdown + Mermaid |
-| 1.8 | Penyusunan SRS per role (1 PM + 3 Programmer) | User story, business rules | `docs/srs/SRS_Anggota1_PM.md` … `SRS_Anggota4_*.md` di branch `srs/*` | Markdown + Git |
+| 1.8 | Penyusunan SRS per role (1 PM + 3 Programmer) | User story, business rules | `workflow/srs/SRS_Anggota1_PM.md` … `SRS_Anggota4_*.md` di branch `srs/*` | Markdown + Git |
 | 1.7 | Inisialisasi traceability matrix | User story | `docs/TRACEABILITY.md` | Markdown |
 
 ### Fase 2 — Design
@@ -491,6 +491,7 @@ Saya tidak akan menebak diam-diam. Berikut hal yang belum terjawab dari dokumen 
 
 | Versi | Tanggal | Perubahan | Oleh |
 |---|---|---|---|
+| 2.1 | 2026-09-16 | Dokumen dipindah ke folder `workflow/` (SRS ke `workflow/srs/`); rujukan path dan versi dokumen terkait diperbarui; versi PDF di `workflow_pdf/`. | DevFlow |
 | 2.0 | 2026-09-16 | **Restrukturisasi tim menjadi 1 Project Manager + 3 Programmer.** BPMN Level 1 diganti swimlane PM, tiga programmer, dan review sejawat; aktivitas 1.8 penyusunan SRS per role; kolom pelaksana di Fase 4 & 5 (test oleh pemilik US, UAT & delivery oleh PM); Git workflow tanpa `develop` — hanya PM merge ke `main`, sub-branch `srs/`, `pm/`, `a2/`, `a3/`, `a4/`; DoR/DoD merujuk SRS & gerbang PM. | DevFlow |
 | 1.4 | 2026-09-15 | Laravel dikunci ke versi 13 (PHP ≥ 8.3); Breeze diganti starter kit Livewire + Fortify (OQ-17); MySQL ≥ 8.0.16 diasumsikan terpasang (instalasi dihapus); §6.0 merujuk `DATABASE_DESIGN.md`; konvensi §5.2 menambahkan penegakan aturan di MySQL. `PROJECT_WORKFLOW.pdf` belum diperbarui. | DevFlow |
 | 1.3 | 2026-09-15 | Versi DBMS ditetapkan MySQL Community Server ≥ 8.0 (bukan MariaDB); tambah §6.0 prasyarat DBMS yang merujuk kontrak K-12, analisis hint, dan katalog query. `PROJECT_WORKFLOW.pdf` belum diperbarui. | DevFlow |
