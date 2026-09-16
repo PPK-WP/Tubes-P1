@@ -14,11 +14,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email')->unique('uq_users_email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            // K-02, US-13..15 (FR-A4-01..07) — DATABASE_DESIGN.md §5.1
+            $table->enum('role', ['admin', 'petugas', 'pengguna'])->default('pengguna');
+            $table->enum('account_status', ['pending', 'active', 'rejected'])->default('pending');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index(['account_status', 'role'], 'idx_users_verification');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
